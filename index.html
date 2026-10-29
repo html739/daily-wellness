@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Health & Wellness</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>🌿 Daily Health & Wellness</h1>
+    <p>Small Healthy Habits, Better Everyday Life</p>
+    <button type="button" id="themeToggle">🌙 Dark Mode</button>
+</header>
+
+<button class="menu-toggle" id="menuToggle"
+        aria-expanded="false" aria-controls="mainNav">
+    ☰ Menu
+</button>
+
+<nav id="mainNav">
+    <a href="#home">Home</a>
+    <a href="#tips">Health Tips</a>
+    <a href="#food">Healthy Food</a>
+    <a href="#diet-plan">Diet Plan</a>
+    <a href="#routine">Daily Routine</a>
+    <a href="#tracker">Habit Tracker</a>
+    <a href="#water">Water Tracker</a>
+    <a href="#wellness-checkin">Wellness Check-in</a>
+    <a href="#dashboard">Dashboard</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hero">
+    <div>
+        <h2>Take Care of Your Health 💚</h2>
+        <p>
+            A healthy lifestyle includes good food, enough rest,
+            regular physical activity and a positive mindset.
+        </p>
+        <button type="button" id="tipButton">Get Wellness Tip</button>
+        <p id="message" aria-live="polite"></p>
+    </div>
+</section>
+
+<!-- HEALTH TIPS -->
+<section id="tips">
+    <h2>🌟 Daily Health Tips</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>💧 Stay Hydrated</h3>
+            <p>Drink water regularly throughout the day.</p>
+        </div>
+        <div class="card">
+            <h3>🏃 Stay Active</h3>
+            <p>Include physical activity in your daily routine.</p>
+        </div>
+        <div class="card">
+            <h3>😴 Sleep Well</h3>
+            <p>Maintain a regular sleep schedule.</p>
+        </div>
+        <div class="card">
+            <h3>🧘 Relax Your Mind</h3>
+            <p>Take breaks and spend time doing relaxing activities.</p>
+        </div>
+    </div>
+</section>
+
+<!-- HEALTHY FOOD -->
+<section id="food" class="food-section">
+    <h2>🥗 Healthy Food Choices</h2>
+    <div class="food-list">
+        <div>🍎 Fresh Fruits</div>
+        <div>🥦 Green Vegetables</div>
+        <div>🥛 Milk & Dairy</div>
+        <div>🥜 Nuts & Seeds</div>
+        <div>🌾 Whole Grains</div>
+        <div>💧 Plenty of Water</div>
+    </div>
+</section>
+
+<!-- PERSONALIZED DIET PLAN -->
+<section id="diet-plan" class="diet-section">
+    <h2>🥗 Personalized Diet Plan</h2>
+    <p>Select your food preference to see daily meal suggestions.</p>
+
+    <div class="diet-box">
+        <label for="dietPreference">Choose Your Food Preference</label>
+
+        <select id="dietPreference">
+            <option value="veg">🥦 Vegetarian (Veg)</option>
+            <option value="nonveg">🍗 Non-Vegetarian (Non-Veg)</option>
+            <option value="egg">🥚 Eggetarian</option>
+        </select>
+
+        <button type="button" id="generateDiet">Generate Diet Plan</button>
+
+        <div id="dietResults" aria-live="polite">
+            <p>Your meal suggestions will appear here.</p>
+        </div>
+
+        <p class="diet-note">
+            These are general meal ideas. Adjust portions to your needs
+            and consider food allergies or dietary restrictions.
+        </p>
+    </div>
+</section>
+
+<!-- DAILY ROUTINE -->
+<section id="routine">
+    <h2>📋 Simple Daily Wellness Routine</h2>
+    <div class="routine-box">
+        <label><input type="checkbox"> Wake up early</label>
+        <label><input type="checkbox"> Drink water</label>
+        <label><input type="checkbox"> Eat a healthy breakfast</label>
+        <label><input type="checkbox"> Do physical activity</label>
+        <label><input type="checkbox"> Take breaks from screens</label>
+        <label><input type="checkbox"> Sleep on time</label>
+    </div>
+</section>
+
+<!-- HABIT TRACKER -->
+<section id="tracker" class="tracker-section">
+    <h2>✅ Daily Habit Tracker</h2>
+    <p class="section-intro">
+        Tick the habits you complete. Your progress is saved on this device.
+    </p>
+
+    <div class="tracker-summary">
+        <strong id="progressText">0 of 6 habits completed</strong>
+
+        <div class="progress-track" id="progressBar"
+             role="progressbar" aria-label="Daily habits completed"
+             aria-valuemin="0" aria-valuemax="6" aria-valuenow="0">
+            <div id="progressFill" class="progress-fill"></div>
+        </div>
+
+        <button type="button" id="resetHabits" class="secondary-button">
+            Reset Today's Habits
+        </button>
+    </div>
+</section>
+
+<!-- WATER TRACKER -->
+<section id="water" class="water-section">
+    <h2>💧 Water Intake Tracker</h2>
+    <p>Keep track of the glasses of water you drink.</p>
+
+    <div class="water-box">
+        <h3><span id="waterCount">0</span> / 8 Glasses</h3>
+
+        <div class="progress-track">
+            <div id="waterFill" class="progress-fill"></div>
+        </div>
+
+        <p id="waterMessage" aria-live="polite">
+            Let's start tracking your water intake!
+        </p>
+
+        <button type="button" id="addWater">+ Add a Glass</button>
+        <button type="button" id="removeWater" class="secondary-button">
+            − Remove a Glass
+        </button>
+    </div>
+</section>
+
+<!-- WELLNESS CHECK-IN -->
+<section id="wellness-checkin" class="tracker-section">
+    <h2>🌼 Wellness Check-in</h2>
+    <p class="section-intro">
+        Record today's mood, sleep and activity.
+        Your entries are saved through Python and Oracle Database.
+    </p>
+
+    <form id="wellnessForm" class="wellness-form">
+        <label for="moodInput">Today's mood</label>
+        <select id="moodInput" name="mood">
+            <option value="Happy">😊 Happy</option>
+            <option value="Calm">😌 Calm</option>
+            <option value="Okay">🙂 Okay</option>
+            <option value="Tired">😴 Tired</option>
+            <option value="Stressed">😟 Stressed</option>
+        </select>
+
+        <label for="sleepInput">Sleep duration (hours)</label>
+        <input id="sleepInput" name="sleep" type="number"
+               min="0" max="24" step="0.5" value="8" required>
+
+        <label for="activityInput">Physical activity (minutes)</label>
+        <input id="activityInput" name="activity" type="number"
+               min="0" max="1440" step="5" value="0" required>
+
+        <button type="submit">Save Today's Check-in</button>
+        <p id="saveStatus" aria-live="polite">
+            Your check-in will be saved to Oracle Database.
+        </p>
+    </form>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="dashboard-section">
+    <h2>📊 Daily Progress Dashboard</h2>
+    <p>Check your daily habit completion and water intake.</p>
+
+    <div class="dashboard-cards">
+        <div class="dashboard-card">
+            <h3>✅ Habits Completed</h3>
+            <p id="dashboardHabits">0 / 6</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>💧 Water Intake</h3>
+            <p id="dashboardWater">0 / 8 glasses</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📈 Overall Progress</h3>
+            <p id="overallProgress">0%</p>
+        </div>
+    </div>
+
+    <div class="chart-panel">
+        <h3>📈 Last 7 Days: Wellness Progress</h3>
+        <p>Chart generated with Python and Matplotlib.</p>
+        <img id="progressChart" src="/progress-chart.png"
+             alt="Chart showing recent wellness progress">
+    </div>
+</section>
+
+<footer>
+    <h3>🌿 Daily Health & Wellness</h3>
+    <p>Healthy habits today create a healthier tomorrow.</p>
+    <p>© 2026 Daily Wellness</p>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>

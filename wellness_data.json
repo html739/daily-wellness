@@ -1,0 +1,16 @@
+{
+    "2026-10-28": {
+        "habits": [
+            false,
+            true,
+            false,
+            true,
+            true,
+            true
+        ],
+        "water": 7,
+        "mood": "Stressed",
+        "sleep": 8.0,
+        "activity": 20
+    }
+}
